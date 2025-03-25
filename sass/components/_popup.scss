@@ -1,0 +1,78 @@
+@use '../abstract' as *;
+@use './form';
+
+// *** Popup ***
+.popup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  z-index: 50;
+  transform: translate(-50%, -50%) scale(1);
+
+  padding: 3.5rem 3.5rem 2rem;
+  padding: 3.5rem;
+
+  gap: 1rem;
+
+  background-color: $color-overlay;
+  color: $color-light;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition: all 0.5s ease-in-out 1.2s;
+  transition-delay: 1.2s;
+
+  text-align: left;
+
+  @include flex-settings($justify: null, $direction: column);
+  @include dimension-settings(100%, null, 25rem, 40rem);
+
+  // *** Javascript Class - hidden ***
+  &.hidden {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+  // ***  End of Javascript Class - hidden ***
+
+  // *** Popup Content ***
+  &__content {
+    @include flex-settings(center, center, column, 2rem);
+  }
+  // *** End of Popup Content ***
+
+  // *** Popup Icon ***
+  &__icon {
+    align-self: flex-start;
+
+    @media (max-width: 510px) {
+      @include dimension-settings(4.5rem);
+    }
+  }
+  // *** End of Popup Icon ***
+
+  // *** Popup Heading ***
+  &__heading {
+    @include font-settings(clamp(2rem, 3cqi, 4rem));
+
+    @media (max-width: 810px) {
+      align-self: flex-start;
+    }
+  }
+  // *** End of Popup Heading ***
+
+  // *** Popup Text ***
+  &__text {
+    @include font-settings(1.4rem, null, 150%, 0.025rem);
+  }
+  // *** End of Popup Text ***
+
+  // *** Popup Btn ***
+  &__btn {
+    @extend .form__btn;
+  }
+  // *** End of Popup Btn ***
+}
+// *** end of Popup ***

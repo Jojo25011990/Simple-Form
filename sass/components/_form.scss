@@ -1,0 +1,149 @@
+@use '../abstract' as *;
+
+// *** Form ***
+.form {
+  position: relative;
+  z-index: 50;
+  transform: scale(1);
+  //   display: none;
+
+  padding: 3.5rem 3.5rem 2rem;
+  padding: 3.5rem;
+
+  gap: 1rem;
+
+  background-color: $color-overlay;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition: all 0.5s ease-in-out 1.2s;
+  transition-delay: 1.2s;
+
+  text-align: left;
+
+  @include flex-settings($justify: null, $direction: column);
+  @include dimension-settings(100%, null, 45rem, 40rem);
+
+  // *** Javascript Class - hidden ***
+  &.hidden {
+    transform: scale(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+  // ***  End of Javascript Class - hidden ***
+
+  // *** Control Form Container ***
+  .control-form {
+    @include dimension-settings(100%, null, 5rem);
+
+    // *** Javascript Class - focus ***
+    &.focus .control-form__label {
+      transform: translateY(0);
+      color: $color-light;
+      padding-left: 0;
+    }
+    // *** End of Javascript Class - focus ***
+
+    // *** Javascript Class - Error ***
+    &.error .control-form__message {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &.error .control-form__input,
+    &.error .control-form__textarea {
+      border-color: $color-danger;
+    }
+    // *** End of Javascript Class - Error ***
+
+    // *** Label ***
+    &__label {
+      display: block;
+
+      color: $color-gray-dark;
+
+      transform: translateY(4.2rem);
+      margin-bottom: 0.7rem;
+      padding-left: 1.4rem;
+
+      transition: all 0.25s;
+
+      @include font-settings(2rem, 700);
+    }
+    // *** End of Label ***
+
+    // *** Input ***
+    &__input {
+      color: $color-gray-dark;
+
+      padding-left: 1.5rem;
+
+      outline: none;
+      border: 0.3rem solid $color-gray;
+
+      @include font-settings(1.6rem, $line-height: 5rem);
+      @include dimension-settings(100%, 5rem);
+    }
+    // *** End of Input ***
+
+    // *** Textarea ***
+    &__textarea {
+      color: $color-gray-dark;
+
+      overflow-y: auto;
+
+      padding: 1.5rem 0 0 1.5rem;
+
+      outline: none;
+      border: 0.3rem solid $color-gray;
+
+      @include font-settings(1.6rem, 400);
+      @include dimension-settings(100%, 8rem, null, 100%, 8rem);
+    }
+    // *** End of Textarea ***
+
+    // *** Error Message ( small tag )  ***
+    &__message {
+      display: inline-block;
+
+      color: $color-danger;
+
+      margin-top: 0.5rem;
+
+      opacity: 0;
+      visibility: hidden;
+
+      text-transform: uppercase;
+      @include font-settings(1.2rem);
+    }
+
+    // *** End of Error Message ( small tag )  ***
+  }
+
+  // *** End of Control Form Container ***
+
+  // *** Submit Button ***
+  &__btn {
+    color: $color-gray-dark;
+    background-color: $color-white;
+
+    padding: 1.5rem;
+    margin-top: 1rem;
+
+    transition: all 0.25s;
+
+    cursor: pointer;
+
+    @include font-settings(1.5rem, 700);
+    @include dimension-settings(100%);
+
+    &:hover,
+    &:active {
+      background-color: $color-gray-dark;
+      color: $color-light;
+    }
+  }
+  // *** End of Submit Button ***
+}
+// *** End of Form ***

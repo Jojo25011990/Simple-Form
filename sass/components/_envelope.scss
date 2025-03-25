@@ -1,0 +1,59 @@
+@use '../abstract' as *;
+
+// *** Envelope with Heart ***
+.envelope {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+
+  opacity: 1;
+
+  transition: all 0.5s ease-in-out;
+
+  border-top: 17rem solid $color-gray-lighter;
+  border-bottom: 17rem solid $color-gray-medium;
+  border-right: 28.9rem solid $color-gray-light;
+  border-left: 28.9rem solid $color-gray-medium;
+
+  @include dimension-settings(0, 0);
+
+  @media (max-width: 610px) {
+    transform: translate(-50%, -50%) scale(0.725);
+  }
+
+  // *** Javascript Class - hidden ***
+  &.hidden {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  // *** End of Javascript Class - hidden ***
+
+  // *** Heart ***
+  &__heart {
+    position: relative;
+
+    background-color: $color-danger;
+
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+
+    animation: heartbeat 1.2s linear infinite;
+
+    @include dimension-settings(6.8rem, 6.8rem);
+
+    &::before,
+    &::after {
+      @include dimension-settings(100%, 100%);
+    }
+
+    &::before {
+      @include heart-pe-seetings(translateX(-50%));
+    }
+
+    &::after {
+      @include heart-pe-seetings(translateY(-50%));
+    }
+  }
+  // *** end of Heart ***
+}
+
+// *** End of Envelope with Heart ***

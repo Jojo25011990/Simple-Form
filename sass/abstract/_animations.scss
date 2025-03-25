@@ -1,0 +1,21 @@
+// *** Heart-Beat Animation ***
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.5);
+  }
+
+  25% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.5);
+  }
+
+  30% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.9);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.7);
+  }
+  70% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.9);
+  }
+}

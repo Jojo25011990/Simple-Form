@@ -1,0 +1,144 @@
+@use '../abstract' as *;
+
+// *** HTML ***
+html {
+  @media (max-width: 510px) {
+    font-size: 50.5%;
+  }
+}
+// *** End of HTML ***
+
+// *** Body ***
+body {
+  background-color: $color-dark;
+  color: $color-light;
+
+  font-family: $font-family-primary;
+  text-align: center;
+
+  position: relative;
+
+  overflow-x: hidden;
+
+  @include flex-settings;
+  @include dimension-settings(100%, null, 100vh);
+}
+// *** End of Body ***
+
+// *** Heading Primary - h1 ***
+.heading__primary {
+  text-shadow: $ts-heading-primary;
+
+  @include position-settings;
+  @include font-settings(clamp(5rem, 7cqi, 8rem), null, $l-spacing: -0.55rem);
+  @include dimension-settings(100%);
+
+  @media (max-width: 510px) {
+    @include position-settings(10rem);
+  }
+
+  &-span {
+    display: inline-block;
+
+    &:nth-child(6) {
+      margin-right: 2rem;
+    }
+
+    &:last-child {
+      margin-right: 3rem;
+    }
+  }
+}
+// *** End of Heading Primary - h1 ***
+
+// *** Heading Secondary - h2 ***
+.heading__secondary {
+  color: $color-gray-darker;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: $transition-secondary;
+  transition-delay: $tran-delay-secondary;
+
+  @include position-settings($z-index: -1);
+  @include dimension-settings(100%);
+  @include font-settings(clamp(8.6rem, 15cqi, 19rem));
+
+  // *** Javascript Class - show ***
+  &.show {
+    opacity: 0.25;
+    visibility: visible;
+
+    @include position-settings(30rem);
+
+    @media (max-width: 510px) {
+      @include position-settings(40rem);
+    }
+  }
+}
+// *** End of Heading Secondary - h2 ***
+
+// *** Main ***
+.main {
+  margin-top: 10rem;
+
+  @include flex-settings($direction: column, $gap: 5rem);
+  @include dimension-settings(100%, auto, null, 144rem);
+}
+// *** End of Main ***
+
+// *** Button Primary ***
+.btn__primary {
+  &:link,
+  &:visited {
+    position: relative;
+    z-index: 5;
+
+    color: inherit;
+
+    border: 0.1rem solid $color-danger;
+
+    text-transform: uppercase;
+    @include font-settings(3rem, 700, 7.5rem, 0.15rem);
+    @include dimension-settings(20rem, 7.5rem);
+  }
+
+  // *** Span && Span delays****
+
+  &-span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+
+    display: inline-block;
+
+    transition: background-color 0.25s;
+
+    @include dimension-settings(25%, 100%);
+  }
+
+  &-span:nth-child(2) {
+    left: 25%;
+    transition-delay: $tran-delay-span2;
+  }
+
+  &-span:nth-child(3) {
+    left: 50%;
+    transition-delay: $tran-delay-span3;
+  }
+
+  &-span:nth-child(4) {
+    left: 75%;
+    transition-delay: $tran-delay-span4;
+  }
+  // *** End of Span ****
+
+  &:hover .btn__primary-span,
+  &:active .btn__primary-span {
+    background-color: $color-danger;
+  }
+}
+
+// *** End of Button Primary ***
